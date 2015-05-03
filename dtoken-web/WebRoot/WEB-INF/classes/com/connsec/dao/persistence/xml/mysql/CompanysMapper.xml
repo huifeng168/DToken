@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.connsec.dao.persistence.CompanysMapper">
+	
+	<update id="update" parameterType="Companys" >
+    	UPDATE COMPANYS SET
+			SHORTNAME		=	#{shortName},
+			FULLNAME		=	#{fullName},
+			DIVISION 		=	#{division},
+			
+			REPRESENTATIVE	=	#{representative},
+			CATEGORY		=	#{category},
+			WEBSITE			=	#{webSite},
+			PHONE 			=	#{phone},
+			EMAIL 			=	#{email},
+			FAX				=	#{fax},
+			POSTALCODE		=	#{postalCode},
+			LICENSE			=	#{license},
+			CREATIONDATE	=	#{creationDate},
+			
+			
+			COUNTRY 		=	#{country},
+			REGION	 		=	#{region},
+			LOCALITY 		=	#{locality},
+			STREET 			=	#{street},
+			
+			DESCRIPTION		=	#{description},
+
+			MODIFIEDBY		=	#{modifiedBy},
+			MODIFIEDDATE	=	current_timestamp,
+			
+			STATUS			=	#{status}
+			
+    	WHERE 1 = 1 
+    	<if test="id != null and id != ''">
+			AND	ID	=	#{id}
+		</if> 
+    </update>
+	
+	<select id="query" parameterType="Companys" resultType="Companys">
+		SELECT
+			*
+		FROM
+			COMPANYS
+		WHERE
+			 (1=1)	
+		<if test="shortName != null and shortName != ''">
+			AND SHORTNAME = #{shortName}
+		</if>
+	</select>
+	
+	
+	<select id="load" parameterType="Companys" resultType="Companys">
+		SELECT
+			*
+		FROM
+			COMPANYS
+		WHERE
+			 (1=1)	
+		<if test="shortName != null and shortName != ''">
+			AND SHORTNAME = #{shortName}
+		</if>
+		<if test="id != null and id != ''">
+			AND ID = #{id}
+		</if>
+	</select>
+	
+</mapper>

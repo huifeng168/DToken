@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.connsec.dao.persistence.UserInfoMapper">
+
+	<insert id="insert" parameterType="UserInfo">
+		INSERT INTO USERINFO(
+			ID,
+			USERNAME,
+			PASSWORD,
+			USERTYPE,
+			
+			DISPLAYNAME ,
+			NAMEZHSHORTSPELL,
+			GIVENNAME ,
+			FAMILYNAME ,
+			GENDER,
+			
+			MOBILE,
+			MOBILEVERIFIED ,
+			EMAIL,
+			EMAILVERIFIED,
+			
+			EMPLOYEENUMBER,
+			ORGANIZATION,
+			DEPARTMENTID,
+			DEPARTMENT,
+			JOBTITLE,
+			
+			CREATEDBY,
+			CREATEDDATE,
+			MODIFIEDBY,
+			MODIFIEDDATE,
+			
+			STATUS
+		)VALUES(
+			#{id},
+			#{username},
+			#{password},
+			#{userType},
+			
+			#{displayName} ,
+			#{nameZHShortSpell},
+			#{givenName},
+			#{familyName},
+			#{gender},
+			
+			
+			#{mobile} ,
+			#{mobileVerified} ,
+			#{email},
+			#{emailVerified} ,
+			
+			
+			#{employeeNumber},
+			#{organization},
+			#{departmentId},
+			#{department},
+			#{jobTitle},
+			
+			#{createdBy},
+			#{createdDate} ,
+			#{modifiedBy},
+			#{modifiedDate},
+			
+			#{status}
+		)
+	</insert>
+
+	<update id="update" parameterType="UserInfo" >
+    	UPDATE USERINFO SET
+			DISPLAYNAME 	=	#{displayName},
+			NAMEZHSHORTSPELL=	#{nameZHShortSpell},
+			GIVENNAME 		=	#{givenName},
+			FAMILYNAME 		=	#{familyName},
+			GENDER			=	#{gender},
+			
+			EMPLOYEENUMBER	=	#{employeeNumber},
+			
+			ORGANIZATION	=	#{organization},
+			DEPARTMENTID	=	#{departmentId},
+			DEPARTMENT		=	#{department},
+			JOBTITLE		=	#{jobTitle},
+			
+			STATUS			=	#{status},
+			MODIFIEDBY		=	#{modifiedBy},
+			MODIFIEDDATE	=	current_timestamp		
+		WHERE 
+			ID	=	#{id}
+    </update>
+    
+    <delete id="remove" parameterType="string">
+    	DELETE FROM USERINFO WHERE ID = #{value}
+    </delete>
+    
+    
+    	
+	<select id="query" parameterType="UserInfo" resultType="UserInfo">
+		SELECT
+			*
+		FROM
+			USERINFO
+		WHERE
+			 (1=1)	
+		<if test="username != null and username != ''">
+			AND USERNAME = #{username}
+		</if>
+	</select>
+	
+	<select id="grid" parameterType="UserInfo" resultType="UserInfo">
+		SELECT
+			*
+		FROM
+			USERINFO
+		WHERE
+			 (1=1)	
+		<if test="username != null and username != ''">
+			AND USERNAME = #{username}
+		</if>
+	</select>
+	
+	<select id="count" parameterType="UserInfo" resultType="java.lang.Integer">
+		SELECT
+			COUNT(*) 
+		FROM
+			USERINFO
+		WHERE
+			 (1=1)	
+		<if test="username != null and username != ''">
+			AND USERNAME = #{username}
+		</if>
+	</select>
+	
+	
+	
+	<select id="load" parameterType="UserInfo" resultType="UserInfo">
+		SELECT
+			*
+		FROM
+			USERINFO
+		WHERE
+			 (1=1)	
+		<if test="username != null and username != ''">
+			AND USERNAME = #{username}
+		</if>
+		<if test="id != null and id != ''">
+			AND ID = #{id}
+		</if>
+		<if test="userType != null and userType != ''">
+			AND USERTYPE = #{userType}
+		</if>
+	</select>
+
+	<select id="get" parameterType="String" resultType="UserInfo">
+		SELECT
+			*
+		FROM
+			USERINFO
+		WHERE
+			 ID =  #{value}
+	</select>
+    	
+	<update id="changePassword" parameterType="UserInfo" >
+    	UPDATE USERINFO SET
+    		<if test="password != null">
+    		PASSWORD			=	#{password} 
+			</if>
+		WHERE 
+			ID	=	#{id}
+    </update>
+    
+    <update id="changeSharedSecret" parameterType="UserInfo" >
+    	UPDATE USERINFO SET
+    		<if test="sharedSecret != null">
+    		SHAREDSECRET		=	#{sharedSecret},
+			SHAREDCOUNTER		=	#{sharedCounter},
+			</if>
+			MODIFIEDDATE		=	current_timestamp
+		WHERE 
+			ID	=	#{id}
+    </update>
+
+    
+    <update id="logisticBatchDelete" parameterType="java.util.List">
+    	UPDATE USERINFO SET STATUS='2' WHERE ID IN
+    		<foreach item="item" collection="list" open="(" separator="," close=")">
+				#{item}
+    		</foreach>
+    </update>
+</mapper>

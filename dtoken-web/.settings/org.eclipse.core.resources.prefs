@@ -1,0 +1,6 @@
+#Sun May 03 12:31:31 GMT+08:00 2015
+eclipse.preferences.version=1
+encoding//src/com/connsec/dao/service/UserInfoService.java=UTF-8
+encoding//src/com/connsec/web/authentication/realm/AbstractAuthenticationRealm.java=UTF-8
+encoding//src/com/connsec/web/authentication/realm/jdbc/JdbcAuthenticationRealm.java=UTF-8
+encoding/<project>=UTF-8

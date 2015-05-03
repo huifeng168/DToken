@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="connsec-web-dtoken"
+  id="myeclipse.1388999265078"
+  context-root="/dtoken"
+  j2ee-spec="6.0"
+  archive="connsec-web-dtoken.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

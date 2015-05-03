@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC 
+		"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+		"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+		
+<tiles-definitions>
+
+	<definition name="company/companysList" extends="base.definition">
+		<put-attribute name="content" value="/WEB-INF/jsp/company/companysList.jsp" />
+	</definition>
+	
+	<definition name="company/companyAdd" extends="base.definition">
+		<put-attribute name="content" value="/WEB-INF/jsp/company/companyAdd.jsp" />
+	</definition>
+	
+	<definition name="company/tenantCompany" extends="base.definition">
+		<put-attribute name="content" value="/WEB-INF/jsp/company/tenantCompany.jsp" />
+	</definition>
+	
+	<definition name="orgs/orgsList" extends="base.definition">
+		<put-attribute name="content" value="/WEB-INF/jsp/orgs/orgsList.jsp" />
+	</definition>
+	
+</tiles-definitions>
